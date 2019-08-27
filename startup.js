@@ -1,49 +1,24 @@
 #!/usr/bin/env node
 
-const os = require("os");
+const {spawn} = require('child_process');
 
-/*if ( os.platform() === "win32" ) {
+var args = [__dirname+"/electron-builder-online-mac.js"];
 
-  const {exec} = require('child_process');
+const options = {
+  cwd: __dirname,
+  spawn: false
+}
 
-  const electron = exec("node "+__dirname+"/electron-builder-online-mac.js");
+const electron = spawn("node", args, options);
 
-  electron.stdout.on('data', (data) => {
-      console.log('stdout: '+data);
-  });
+electron.stdout.on('data', (data) => {
+    console.log('stdout: '+data);
+});
 
-  electron.stderr.on('data', (data) => {
-    console.log('stderr: '+data);
-  });
+electron.stderr.on('data', (data) => {
+  console.log('stderr: '+data);
+});
 
-  electron.on('close', (code) => {
-    console.log('child process exited with code '+code);
-  });
-
-} else if ( os.platform() === "darwin" || os.platform() === "linux" ) {*/
-
-  const {spawn} = require('child_process');
-
-  var args = [__dirname+"/electron-builder-online-mac.js"];
-
-  const options = {
-    cwd: __dirname,
-    spawn: false
-  }
-
-  const electron = spawn("node", args, options);
-
-  electron.stdout.on('data', (data) => {
-      console.log('stdout: '+data);
-  });
-
-  electron.stderr.on('data', (data) => {
-    console.log('stderr: '+data);
-  });
-
-  electron.on('close', (code) => {
-    console.log('child process exited with code '+code);
-  });
-
-//}
-
+electron.on('close', (code) => {
+  console.log('child process exited with code '+code);
+});
