@@ -1,6 +1,6 @@
 {
     "name": "electron-builder-online-mac",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Build electron applications online for windows, linux and mac os x. Automatically deploy them to GitHub Releases",
     "main": "electron-builder-online.js",
     "scripts": {
@@ -13,7 +13,14 @@
     "author": "Paulo André Rieck <paulo.rieck@gmail.com>",
     "license": "MIT",
     "dependencies": {
-      
+      "express": "^4.17.1",
+      "express-session": "^1.16.2",
+      "git-clone-promise": "^1.0.0",
+      "nedb-session-store": "^1.1.2",
+      "path": "^0.12.7",
+      "rimraf": "^3.0.0",
+      "temp-dir": "^2.0.0",
+      "ws": "^7.1.2"
     },
     "bin": {
       "electron-builder-online-mac": "./startup.js"
