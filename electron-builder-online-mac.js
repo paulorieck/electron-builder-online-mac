@@ -75,18 +75,18 @@ function cloneGit(repository, execution_path, socket, callback) {
     const git = spawn("git", args, options);
 
     git.stdout.on('data', (log) => {
-        console.log('YARN stdout: '+log);
+        console.log('git stdout: '+log);
         socket.send(JSON.stringify({"op": "console_output", "message": 'git stdout: '+log}));
     });
 
     git.stderr.on('data', (log) => {
-        console.log('YARN stderr: '+log);
+        console.log('git stderr: '+log);
         socket.send(JSON.stringify({"op": "console_output", "message": 'git stderr: '+log}));
     });
 
     git.on('close', (code) => {
         
-        console.log('YARN child process exited with code '+code);
+        console.log('git child process exited with code '+code);
         socket.send(JSON.stringify({"op": "console_output", "message": 'git child process exited with code '+code}));
 
         callback();
