@@ -65,7 +65,7 @@ function cloneGit(repository, execution_path, socket, callback) {
 
     const {spawn} = require('child_process');
 
-    var args = ["clone", repository];
+    var args = ["clone", "\""+repository+"\""];
 
     const options = {
         cwd: execution_path,
